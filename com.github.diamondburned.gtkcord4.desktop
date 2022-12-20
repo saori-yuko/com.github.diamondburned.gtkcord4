@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+
+Name=gtkcord4
+Comment=A discord client in GTK4
+Icon=com.github.diamondburned.gtkcord4
+Exec=gtkcord4 %U
+Terminal=false
+Categories=Network;InstantMessaging;
+Keywords=discord;discord;chat;irc;communications;talk;
+X-Purism-FormFactor=Workstation;Mobile;

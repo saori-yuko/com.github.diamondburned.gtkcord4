@@ -1,0 +1,42 @@
+id: com.github.diamondburned.gtkcord4
+runtime: org.gnome.Platform
+runtime-version: '43'
+sdk: org.gnome.Sdk
+command: gtkcord4
+
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.golang
+
+finish-args:
+  - --socket=wayland
+  - --socket=fallback-x11
+  - --socket=session-bus
+  - --socket=pulseaudio
+  - --share=ipc
+  - --share=network
+  - --filesystem=xdg-download
+  - --filesystem=xdg-pictures
+  - --filesystem=xdg-videos
+  - --talk-name=org.freedesktop.Notifications
+  - --talk-name=org.kde.StatusNotifierWatcher
+  - --filesystem=xdg-run/keyring
+  - --device=dri
+
+modules:
+  - name: gtkcord4
+    sources:
+      - type: file
+        path: com.github.diamondburned.gtkcord4.desktop
+      - type: file
+        path: com.github.diamondburned.gtkcord4.svg
+    buildsystem: simple
+    build-options:
+      build-args:
+        - --share=network
+      append-path: /usr/lib/sdk/golang/bin
+      env:
+        GOBIN: /app/bin
+    build-commands: 
+        - go install -v github.com/diamondburned/gtkcord4@d3b96395d8adb0244071ff3ba966680cb6facda0
+        - install -Dm644 -t /app/share/applications/ com.github.diamondburned.gtkcord4.desktop
+        - install -Dm644 -t /app/share/icons/hicolor/scalable/apps/ com.github.diamondburned.gtkcord4.svg
