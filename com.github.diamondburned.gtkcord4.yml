@@ -37,6 +37,6 @@ modules:
       env:
         GOBIN: /app/bin
     build-commands: 
-        - go install -v github.com/diamondburned/gtkcord4@d3b96395d8adb0244071ff3ba966680cb6facda0
+        - go install -v -tags libadwaita github.com/diamondburned/gtkcord4@d3b96395d8adb0244071ff3ba966680cb6facda0
         - install -Dm644 -t /app/share/applications/ com.github.diamondburned.gtkcord4.desktop
         - install -Dm644 -t /app/share/icons/hicolor/scalable/apps/ com.github.diamondburned.gtkcord4.svg
